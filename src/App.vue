@@ -1,6 +1,6 @@
 <template>
   <main>
-    <router-view  ></router-view>
+    <router-view  @money-record="addNewRecord" :theRecord="records"></router-view>
   </main>
 </template>
 
@@ -20,11 +20,11 @@ export default {
       dateFlow: ""
     }
   },
-  provide(){
-    return{
-      recordings: this.records,
-    }
-  },
+  // provide(){
+  //   return{
+  //     recordings: this.records,
+  //   }
+  // },
   methods:{
     addNewRecord(choice, flow, value, date){
       const newRecord = {
@@ -35,7 +35,6 @@ export default {
         dateFlow: date,
       };
       this.records.push(newRecord);
-      console.log(newRecord);
     }
   }
 }

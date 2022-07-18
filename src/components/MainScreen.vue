@@ -6,7 +6,7 @@
 
     <taskbar-menu></taskbar-menu>
     <money-summary></money-summary>
-    <track-list v-for="record in recordings"
+    <track-list v-for="record in theRecord"
     :key="record.iconImg"
     :iconImg="record.iconImage"
     :type="record.flowType"
@@ -21,8 +21,8 @@
 
 <script>
   export default {
-    // props: ['records'],
-    inject: ['recordings']
+    props: ['theRecord'],
+    // inject: ['recordings']
   }
 </script>
 
