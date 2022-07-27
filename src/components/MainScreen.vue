@@ -6,14 +6,14 @@
 
     <taskbar-menu></taskbar-menu>
     <money-summary></money-summary>
-    <track-list v-for="record in theRecord"
+    <!-- <track-list v-for="record in theList"
     :key="record.iconImg"
     :iconImg="record.iconImage"
     :type="record.flowType"
     :name="record.flowName"
     :amount="record.flowAmount"
     :date="record.dateFlow"
-    ></track-list>
+    ></track-list> -->
     <router-link to="/add"> <img  class = "addImg" src="../assets/icon-add.svg" alt="add image"> </router-link>
     
   </section>
@@ -21,8 +21,11 @@
 
 <script>
   export default {
-    props: ['theRecord'],
-    // inject: ['recordings']
+    computed:{
+      theList(){
+        return this.$store.getters['getData'];
+      }
+    }
   }
 </script>
 

@@ -17,18 +17,18 @@
         <div class="content" @click="append('3')">3</div>
         <div class="content" @click="subtract"> <img src="../assets/icon-minus.svg" alt="minus image"> </div>
         <div class="content" @click="onlyOneDot()">.</div>
-        <div class="content" @click="append(0)">0</div>
+        <div class="content" @click="append('0')">0</div>
         <div class="content" @click="reset"> <img src="../assets/icon-cancel.svg" alt="cancel image"> </div>
-        <router-link to="/" class="content tick" @click="submitData"> <img src="../assets/icon-tick.svg" alt="tick image"> </router-link>
+        <router-link to="/" class="content tick" @click="submitData()"> <img src="../assets/icon-tick.svg" alt="tick image"> </router-link>
     </div>
 </template>
 
 <script>
 export default {
     props: ["choiceMade", "calendarShow", "flowType"],
-    emits: ["money-record"],
     data() {
         return{
+            theImage: "",
             beforeCal: null,
             currentValue: "",
             numberOperatorClicked: 0,
@@ -69,8 +69,16 @@ export default {
             }
         },
         submitData(){
-            this.$emit("money-record", this.choiceMade, this.flowType, this.currentValue, this.datePicked);
             console.log(this.choiceMade, this.flowType, this.currentValue, this.datePicked);
+            this.$store.commit({
+                type: 'pushData',
+                theImageChoice: this.choiceMade,
+                theChoiceMade: this.choiceMade, 
+                theFlowType: this.flowType, 
+                theCurrentValue: this.currentValue, 
+                theDatePicked: this.datePicked
+            });
+            console.log(this.theImageChoice, this.theChoiceMade, this.theCurrentValue, this.theDatePicked);
         }
     }
 }

@@ -12,11 +12,31 @@
 
 <script>
 export default {
-    props:['iconImg', 'type', 'name', 'amount', 'date'],
+    props:{
+        iconImg:{
+            type: String,
+            required: true,
+        }, 
+        type: {
+            type:String,
+            required: true,
+        }, 
+        name:{
+            type: String,
+            required: true,
+        }, 
+        amount:{
+            type: String,
+            required: true,
+        }, 
+        date:{
+            type: String,
+            requried: true,
+        }},
     methods:{
-        imageSrc(image){
-            return "../assets/icon-" + image + ".svg";
-        }
+        // imageSrc(image){
+        //     return "../assets/icon-" + image + ".svg";
+        // }
     }
 }
 
